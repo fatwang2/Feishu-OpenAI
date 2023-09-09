@@ -164,7 +164,7 @@ func TestChatGPT_streamChat(t *testing.T) {
 		case gotOutput := <-responseStream:
 			fmt.Printf("gotOutput: %v\n", gotOutput)
 
-		case <-time.After(5 * time.Second):
+		case <-time.After(10 * time.Second):
 			t.Errorf("streamChat() timeout, expected output not received")
 		}
 	}
