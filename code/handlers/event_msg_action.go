@@ -109,7 +109,7 @@ func (m *StreamMessageAction) Execute(a *ActionInfo) bool {
 	answer := ""
 	chatResponseStream := make(chan string)
 	done := make(chan struct{}) // 添加 done 信号，保证 goroutine 正确退出
-	noContentTimeout := time.AfterFunc(10*time.Second, func() {
+	noContentTimeout := time.AfterFunc(20*time.Second, func() {
 		log.Println("no content timeout")
 		close(done)
 		err := updateFinalCard(*a.ctx, "请求超时", cardId, ifNewTopic)
