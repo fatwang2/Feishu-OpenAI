@@ -34,12 +34,12 @@
 
 ## 商业支持
 
-如果开源版无法满足您公司的需求，推荐您体验商业共创版
-
-- 内置开箱即用的 Azure Openai: 无需部署到海外，即可获得数十倍的性能提升
-- 掌控全局的 Admin Panel: AI资源管理、对话日志查询、风险词规避和对话权限管理
-- 专人技术支持: 配备专业部署交付人员与后期一对一维护服务
-- 同时提供在线 Saas 版/企业级私有部署
+升级至商业共创版，满足您公司的需求：
+1. 全面支持：集成OpenAI、Midjourney等主流AI模型，充足资源满足小团队全年需求。
+2. 超值优惠：后续补充AI资源价格仅为官方价的60%，为您节省成本。
+3. 持续更新：企联AI已获「奇绩创坛」数百万天使投资，确保商业版持续优化和质量提升。
+4. 管理便捷：实用Admin Panel助您轻松管理AI资源、查询日志、避免风险词汇和权限控制。
+5. 高度安全：提供在线SaaS版与企业级私有部署，确保数据安全和隐私保护。
 
 查看更多内容: https://www.connectai-e.com
 
@@ -52,11 +52,13 @@
 
 ## 👻 机器人功能
 
-🗣 语音交流：私人直接与机器人畅所欲言
+🗣 语音交流：私人直接与机器人畅所欲言「Whisper」
+
+🕵️ 图片推理: 借助大模型互动式对话图片「GPT4V」
 
 💬 多话题对话：支持私人和群聊多话题讨论，高效连贯
 
-🖼 文本成图：支持文本成图和以图搜图
+🖼 文本成图：支持文本成图和以图搜图 「DALLE-3」
 
 🛖 场景预设：内置丰富场景列表，一键切换AI角色
 
@@ -94,8 +96,8 @@
 
 ## 🌟 项目特点
 
-- 🍏 对话基于 OpenAI-[gpt-3.5-turbo](https://platform.openai.com/account/api-keys) 接口
-- 🍎 通过 lark，将 ChatGPT 接入[飞书](https://open.feishu.cn/app)和[飞书国际版](https://www.larksuite.com/)
+- 🍏 支持 OpenAI (https://platform.openai.com/account/api-keys) 主要Chat接口:GPT4、DALL·E-3、Whisper、GPT-4V
+- 🍎 将 ChatGPT 接入[飞书](https://open.feishu.cn/app)和[飞书国际版](https://www.larksuite.com/)
 - 🥒
   支持[Serverless 云函数](https://github.com/serverless-devs/serverless-devs)、[本地环境](https://dashboard.cpolar.com/login)、[Docker](https://www.docker.com/)、[二进制安装包](https://github.com/Leizhenpeng/feishu-chatgpt/releases/)
   等多种渠道部署

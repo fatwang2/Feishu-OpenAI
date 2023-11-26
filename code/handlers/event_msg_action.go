@@ -23,6 +23,23 @@ func setDefaultPrompt(msg []openai.Messages) []openai.Messages {
 	return msg
 }
 
+//func setDefaultVisionPrompt(msg []openai.VisionMessages) []openai.VisionMessages {
+//	if !hasSystemRole(msg) {
+//		msg = append(msg, openai.VisionMessages{
+//			Role: "system", Content: []openai.ContentType{
+//				{Type: "text", Text: "You are ChatGPT4V, " +
+//					"You are ChatGPT4V, " +
+//					"a large language and picture model trained by" +
+//					" OpenAI. " +
+//					"Answer in user's language as concisely as" +
+//					" possible. Knowledge cutoff: 20230601 " +
+//					"Current date" + time.Now().Format("20060102"),
+//				}},
+//		})
+//	}
+//	return msg
+//}
+
 type MessageAction struct { /*消息*/
 }
 
@@ -37,10 +54,10 @@ func (*MessageAction) Execute(a *ActionInfo) bool {
 		Role: "user", Content: a.info.qParsed,
 	})
 
-	//fmt.Println("msg", msg)
-	//logger.Debug("msg", msg)
 	// get ai mode as temperature
 	aiMode := a.handler.sessionCache.GetAIMode(*a.info.sessionId)
+	fmt.Println("msg: ", msg)
+	fmt.Println("aiMode: ", aiMode)
 	completions, err := a.handler.gpt.Completions(msg, aiMode)
 	if err != nil {
 		replyMsg(*a.ctx, fmt.Sprintf(
@@ -132,6 +149,8 @@ func (m *StreamMessageAction) Execute(a *ActionInfo) bool {
 
 		//log.Printf("UserId: %s , Request: %s", a.info.userId, msg)
 		aiMode := a.handler.sessionCache.GetAIMode(*a.info.sessionId)
+		//fmt.Println("msg: ", msg)
+		//fmt.Println("aiMode: ", aiMode)
 		if err := a.handler.gpt.StreamChat(*a.ctx, msg, aiMode,
 			chatResponseStream); err != nil {
 			err := updateFinalCard(*a.ctx, "聊天失败", cardId, ifNewTopic)

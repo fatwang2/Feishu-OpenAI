@@ -23,12 +23,34 @@ func TestCompletions(t *testing.T) {
 	fmt.Println(resp.Content, resp.Role)
 }
 
+func TestVisionOnePic(t *testing.T) {
+	config := initialization.LoadConfig("../../config.yaml")
+	content := []ContentType{
+		{Type: "text", Text: "What’s in this image?", ImageURL: nil},
+		{Type: "image_url", ImageURL: &ImageURL{
+			URL: "https://resource.liaobots." +
+				"com/1849d492904448a0ac17f975f0b7ca8b.jpg",
+			Detail: "high",
+		}},
+	}
+
+	msgs := []VisionMessages{
+		{Role: "assistant", Content: content},
+	}
+	gpt := NewChatGPT(*config)
+	resp, err := gpt.GetVisionInfo(msgs)
+	if err != nil {
+		t.Errorf("TestCompletions failed with error: %v", err)
+	}
+	fmt.Println(resp.Content, resp.Role)
+}
+
 func TestGenerateOneImage(t *testing.T) {
 	config := initialization.LoadConfig("../../config.yaml")
 	gpt := NewChatGPT(*config)
 	prompt := "a red apple"
 	size := "256x256"
-	imageURL, err := gpt.GenerateOneImage(prompt, size)
+	imageURL, err := gpt.GenerateOneImage(prompt, size, "")
 	if err != nil {
 		t.Errorf("TestGenerateOneImage failed with error: %v", err)
 	}
